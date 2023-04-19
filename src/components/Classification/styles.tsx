@@ -7,19 +7,24 @@ interface StyledClassificationItemContainerProps {
 
 export const StyledClassificationContainer = styled.div`
   display: flex;
-  align-items: center;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 0 var(--space-4);
+  padding: var(--space-1) var(--space-5);
 `
 
 export const StyledClassificationItemContainer = styled.div<StyledClassificationItemContainerProps>`
   display: flex;
   align-items: center;
-  gap: var(--space-2);
   cursor: pointer;
-  margin-left: var(--space-4); 
-  background: ${(props) => (props.classificated ? "var(--colors-id-dark)" : "var(--colors-grey-900)")};;
+  margin: var(--space-2) 0;
+  background: var(--colors-grey-900);
   width: fit-content;
   padding: var(--space-1) var(--space-2);
   border-radius: var(--space-1);
+  min-width: 100px;
+  justify-content: space-between;
+  background: ${(props) => (props.classificated ? "var(--colors-id-dark)" : "var(--colors-grey-900)")};;
 
   label {
     font-size: var(--fontSizes-xs);

@@ -81,7 +81,7 @@ export const CardNoteContainer = styled.article`
     width: fit-content;
   }
 
-  @media (max-width: 425px){
+  @media (max-width: 490px){
     width: 100%;
     margin-bottom: var(--space-10);
   }

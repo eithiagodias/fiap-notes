@@ -48,7 +48,7 @@ export const ModalContainer = styled(CardNoteContainer)`
     color: var(--colors-text-title);
   }
 
-  @media (max-width: 425px){
+  @media (max-width: 490px){
     margin: 0 !important;
   }
 `;

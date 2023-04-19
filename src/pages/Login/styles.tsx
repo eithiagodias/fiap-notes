@@ -44,7 +44,7 @@ export const Wrapper = styled.section`
     }
   }
 
-  @media (max-width: 425px){
+  @media (max-width: 490px){
     width: 90%;
   }
 `;

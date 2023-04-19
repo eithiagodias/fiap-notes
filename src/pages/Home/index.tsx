@@ -106,10 +106,10 @@ function Home() {
         defaultClassification={classification}
         items={[
           { name: "urgent", label: "Prioridade" },
-          { name: "date>", label: "Data Maior" },
-          { name: "date<", label: "Data Menor" },
-          { name: "ASC", label: "Ascendente" },
-          { name: "DESC", label: "Descendente" },
+          { name: "date>", label: "Data (maior)" },
+          { name: "date<", label: "Data (menor)" },
+          { name: "ASC", label: "Asc (a-z)" },
+          { name: "DESC", label: "Desc (z-a)" },
         ]}
       />
       <Container>
