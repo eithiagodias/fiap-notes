@@ -1,0 +1,8 @@
+{
+  "name": "fiap-notes",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/eithiagodias/fiap-notes.git",
+  "author": "Thiago Dias <thiagorodriguesdias@outlook.com>",
+  "license": "MIT"
+}
