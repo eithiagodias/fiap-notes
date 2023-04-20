@@ -1,9 +1,11 @@
-import { useCallback, useContext, useEffect, useState } from "react";
+import { useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+
 import { Context } from "../../Context/AuthContext";
-import FormLogin, { FormValueState } from "./FormLogin";
-import { Container, Wrapper } from "./styles";
 import Logo from "../../components/Logo";
+import FormLogin from "./FormLogin";
+
+import { Container, Wrapper } from "./styles";
 
 function Login() {
   const { handleLogin, authenticated } = useContext(Context);

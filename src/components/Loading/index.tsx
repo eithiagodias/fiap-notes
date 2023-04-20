@@ -1,10 +1,12 @@
-import { Container, Spinner } from "./styles";
+import { Container, Overlay, Spinner } from "./styles";
 
 function Loading() {
   return (
-    <Container>
-      <Spinner />
-    </Container>
+    <Overlay>
+      <Container>
+        <Spinner />
+      </Container>
+    </Overlay>
   );
 }
 

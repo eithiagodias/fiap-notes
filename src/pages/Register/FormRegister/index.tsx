@@ -1,8 +1,10 @@
 import { ErrorMessage, Field, Formik } from "formik";
 import { Link } from "react-router-dom";
-import { Form } from "./styles";
+
 import Button from "../../../components/Button";
 import { registerValidation } from "./validations";
+
+import { Form } from "./styles";
 
 interface FormValueState {
   username: string;

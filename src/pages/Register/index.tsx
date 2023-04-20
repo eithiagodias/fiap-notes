@@ -1,11 +1,10 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Context } from "../../Context/AuthContext";
-import { NotesService } from "../../services/notes/note-service";
-import { Note } from "../../services/notes/types";
 import FormRegister from "./FormRegister";
-import { Container, Wrapper } from "./styles";
 import Logo from "../../components/Logo";
+
+import { Container, Wrapper } from "./styles";
 
 function Register() {
   const { handleRegister, authenticated } = useContext(Context);

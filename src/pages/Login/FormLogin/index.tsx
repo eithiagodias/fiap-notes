@@ -1,8 +1,10 @@
 import { Link } from "react-router-dom";
-import Button from "../../../components/Button";
-import { Form } from "./styles";
+
 import * as Yup from "yup";
 import { ErrorMessage, Field, Formik } from "formik";
+
+import Button from "../../../components/Button";
+import { Form } from "./styles";
 
 export interface FormValueState {
   username: string;
