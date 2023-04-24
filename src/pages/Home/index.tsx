@@ -93,7 +93,10 @@ function Home() {
       {showModal && (
         <Modal
           title={`${noteEdit?.id ? 'Editar Nota' : 'Nova nota'}`}
-          handleClose={() => setShowModal(false)}
+          handleClose={() => {
+            setShowModal(false)
+            setNoteEdit(undefined)
+          }}
         >
           <FormNote handleSubmit={createOrUpdateNote} noteEdit={noteEdit} />
         </Modal>
