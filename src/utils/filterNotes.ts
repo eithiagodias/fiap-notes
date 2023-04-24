@@ -21,8 +21,8 @@ export const filterNotes = ({
       }
 
       if(classification.includes('date')) {
-        const bDate = new Date(b.date)
-        const aDate = new Date(a.date)
+        const bDate: any = new Date(b.date)
+        const aDate: any = new Date(a.date)
         return classification == 'date>' ?  bDate - aDate : aDate - bDate;
       }
 
