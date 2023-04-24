@@ -39,7 +39,7 @@ function FormLogin({ handleSubmit }: FormLoginProps) {
         <Field type="password" name="password" placeholder="Insira sua senha" />
         <ErrorMessage component="span" className="error" name="password" />
         <Button>Entrar</Button>
-        <p>Não possui conta? <Link to="/register">Registar</Link></p>
+        <p>Não possui conta? <Link to="/register">Registrar</Link></p>
       </Form>
     </Formik>
   );
