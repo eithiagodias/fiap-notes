@@ -24,20 +24,26 @@ export default function useAuth() {
   }, []);
 
   async function handleLogin(payload: AuthPayload) {
+    debugger;
     try {
       setLoading(true);
-      const {
-        data: { token },
-      } = await AuthService.login(payload);
 
-      localStorage.setItem("token", token);
-      setAuthenticated(true);
+      const response = await AuthService.register(payload);
+      const token = response.data;
+
+      if (token) {
+        localStorage.setItem("token", token);
+        setAuthenticated(true);
+      } else {
+        setAuthenticated(false);
+        alert("Usuário não cadastrado!");
+      }
     } catch (error) {
       if (axios.isAxiosError(error)) {
         const err = error as ErrorResponse;
         alert(err.response?.data.erro);
       } else {
-        alert("Erro insesperado");
+        alert("Erro inesperado");
       }
     } finally {
       setLoading(false);
@@ -45,20 +51,21 @@ export default function useAuth() {
   }
 
   async function handleRegister(payload: AuthPayload) {
+    debugger;
     try {
       setLoading(true);
-      const {
-        data: { token },
-      } = await AuthService.register(payload);
+
+      const response = await AuthService.register(payload);
+      const token = response.data;
 
       localStorage.setItem("token", token);
       setAuthenticated(true);
     } catch (error) {
       if (axios.isAxiosError(error)) {
         const err = error as ErrorResponse;
-        alert(err.response?.data.erro);
+        alert(err.response?.data);
       } else {
-        alert("Erro insesperado");
+        alert("Erro inesperado");
       }
     } finally {
       setLoading(false);

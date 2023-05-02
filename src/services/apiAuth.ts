@@ -1,5 +1,6 @@
 import axios from "axios";
 
 export const apiAuth = axios.create({
-  baseURL: `https://fiap-notes-api-auth.herokuapp.com/`,
+
+  baseURL: `http://localhost:9090/api/loginValidator/`,
 });
