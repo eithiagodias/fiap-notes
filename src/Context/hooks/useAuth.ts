@@ -1,6 +1,5 @@
 import axios, { AxiosError, AxiosResponse } from "axios";
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 
 import { AuthService } from "../../services/auth/auth-service";
 import { AuthPayload } from "../../services/auth/types";
@@ -24,11 +23,11 @@ export default function useAuth() {
   }, []);
 
   async function handleLogin(payload: AuthPayload) {
-    debugger;
+
     try {
       setLoading(true);
 
-      const response = await AuthService.register(payload);
+      const response = await AuthService.login(payload);
       const token = response.data;
 
       if (token) {
@@ -51,7 +50,7 @@ export default function useAuth() {
   }
 
   async function handleRegister(payload: AuthPayload) {
-    debugger;
+
     try {
       setLoading(true);
 

@@ -24,7 +24,6 @@ interface PrivateRouteProps {
 
 function PrivateRoute({ authenticated }: PrivateRouteProps) {
   if (!authenticated) return <Navigate to="/" replace />;
-
   return <Outlet />;
 }
 
@@ -39,6 +38,7 @@ function AppRoutes() {
           <Route path="home" element={<Home />} />
         </Route>
         <Route path="register" element={<Register />} />
+        <Route path="*" element={<Login />} />
       </Routes>
     </BrowserRouter>
   );

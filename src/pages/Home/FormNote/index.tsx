@@ -5,13 +5,16 @@ import {
   FormikErrors,
   FormikHelpers,
 } from "formik";
+
+import * as Yup from "yup";
+
 import Button from "../../../components/Button";
 import Checkbox from "../../../components/Checkbox";
 import { Form } from "./styles";
-import * as Yup from "yup";
+
 import { Note } from "../../../services/notes/types";
 
-export interface FormValueState {
+export interface NoteFormValueState {
   text: string;
   urgent: boolean;
 }
@@ -19,8 +22,8 @@ export interface FormValueState {
 interface FormNoteProps {
   noteEdit?: Note,
   handleSubmit: (
-    payload: FormValueState,
-    actions: FormikHelpers<FormValueState>
+    payload: NoteFormValueState,
+    actions: FormikHelpers<NoteFormValueState>
   ) => void;
 }
 

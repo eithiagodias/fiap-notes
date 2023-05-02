@@ -1,4 +1,5 @@
 import { AuthProvider } from "./Context/AuthContext";
+import { NoteProvider } from "./Context/NotesContext";
 import { GlobalStyles } from "./GlobalStyles";
 import AppRoutes from "./routes";
 
@@ -7,7 +8,9 @@ function App() {
     <>
       <GlobalStyles />
       <AuthProvider>
-        <AppRoutes />
+        <NoteProvider>
+          <AppRoutes />
+        </NoteProvider>
       </AuthProvider>
     </>
   );

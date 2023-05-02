@@ -1,9 +1,8 @@
 import { useCallback, useContext, useEffect, useState } from "react";
 import CardNote from "../../components/CardNote";
 import FabButton from "../../components/FabButton";
-import FormNote, { FormValueState } from "./FormNote";
+import FormNote, { NoteFormValueState } from "./FormNote";
 import Modal from "../../components/Modal";
-import { NotesService } from "../../services/notes/note-service";
 import { Note } from "../../services/notes/types";
 import { Container } from "./styles";
 import { Context } from "../../Context/AuthContext";
@@ -12,48 +11,34 @@ import Loading from "../../components/Loading";
 import { FormikHelpers } from "formik";
 import SearchInput from "../../components/SearchInput";
 import Navbar from "../../components/NavBar";
-import Button from "../../components/Button";
-import Checkbox from "../../components/Checkbox";
 import Classification from "../../components/Classification";
 import { filterNotes } from "../../utils/filterNotes";
+import useNotes from "../../Context/hooks/useNotes";
 
 function Home() {
-
+  const { notes, updateNote, postNotes, deleteNote, setLoading, loading } = useNotes()
   const { authenticated } = useContext(Context);
-  const [notes, setNotes] = useState<Note[]>([] as Note[]);
   const [searchText, setSearchText] = useState('');
   const [classification, setClassification] = useState('');
 
   const [noteEdit, setNoteEdit] = useState<Note>()
   const [showModal, setShowModal] = useState(false);
-  const [loading, setLoading] = useState(true);
+
   const navigate = useNavigate();
 
   useEffect(() => {
-    (async () => {
-      const response = await NotesService.getNotes();
-
-      setNotes(response.data);
-      setLoading(false);
+    (() => {
+      setTimeout(() => {setLoading(false)}, 3000)
     })();
   }, []);
 
   const createOrUpdateNote = useCallback(
-    (values: FormValueState, actions: FormikHelpers<FormValueState>) => {
-      (async () => {
+    (values: NoteFormValueState, actions: FormikHelpers<NoteFormValueState>) => {
+      (() => {
         if (noteEdit?.id) {
-          const response = await NotesService.updateNote(values, noteEdit.id);
-          if (response.status === 200) {
-            setNotes((prevState: Note[]) => {
-              const index = prevState.findIndex((n) => n.id === noteEdit.id)
-              if (index !== -1) prevState[index] = { ...prevState[index], ...values }
-              return prevState
-            });
-          }
-
+          updateNote(values, noteEdit.id)
         } else {
-          const response = await NotesService.postNotes(values);
-          setNotes((prevState) => [...prevState, response.data]);
+          postNotes(values)
         }
 
         actions.setSubmitting(false)
@@ -64,10 +49,9 @@ function Home() {
     [notes, noteEdit]
   );
 
-  const deleteNote = useCallback((id: number) => {
-    (async () => {
-      await NotesService.deleteNote({ id });
-      setNotes((prevState) => prevState.filter((note) => note.id !== id));
+  const removeNote = useCallback((id: number) => {
+    (() => {
+      deleteNote(id)
     })();
   }, []);
 
@@ -119,7 +103,7 @@ function Home() {
         {filteredNotes.map((note) => (
           <CardNote
             key={note.id}
-            handleDelete={deleteNote}
+            handleDelete={removeNote}
             note={note}
             handleDoubleClick={() => handleDoubleClick(note)}
           />
