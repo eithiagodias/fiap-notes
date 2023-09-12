@@ -6,7 +6,7 @@ function Logo() {
       <span className="material-icons-outlined">
         text_snippet
       </span>
-      <p>fiap notes</p>
+      <p>fiap notes - devops</p>
     </StyledLogoContainer>
   );
 }
